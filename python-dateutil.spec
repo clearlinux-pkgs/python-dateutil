@@ -4,7 +4,7 @@
 #
 Name     : python-dateutil
 Version  : 2.4.2
-Release  : 16
+Release  : 17
 URL      : https://github.com/dateutil/dateutil/archive/2.4.2.tar.gz
 Source0  : https://github.com/dateutil/dateutil/archive/2.4.2.tar.gz
 Summary  : No detailed summary available
