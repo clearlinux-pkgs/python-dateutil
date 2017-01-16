@@ -4,19 +4,25 @@
 #
 Name     : python-dateutil
 Version  : 2.4.2
-Release  : 20
+Release  : 21
 URL      : https://github.com/dateutil/dateutil/archive/2.4.2.tar.gz
 Source0  : https://github.com/dateutil/dateutil/archive/2.4.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: python-dateutil-python
+BuildRequires : pbr
+BuildRequires : pip
+BuildRequires : pluggy
+BuildRequires : py-python
+BuildRequires : pytest
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : six
-BuildRequires : six-python
+BuildRequires : tox
 BuildRequires : tzdata
+BuildRequires : virtualenv
 Patch1: python-dateutil-system-zoneinfo.patch
 
 %description
@@ -36,17 +42,21 @@ python components for the python-dateutil package.
 %patch1 -p1
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484567415
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-python2 setup.py test
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
+export SOURCE_DATE_EPOCH=1484567415
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
