@@ -4,7 +4,7 @@
 #
 Name     : python-dateutil
 Version  : 2.6.1
-Release  : 24
+Release  : 25
 URL      : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
 Summary  : Extensions to the standard Python datetime module
