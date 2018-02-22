@@ -1,0 +1,20 @@
+# This file contains recursive sources that require this package
+awscli
+bash_kernel
+boto3
+botocore
+catkin
+catkin_pkg
+certbot
+gensim
+icalendar
+ipykernel
+ipython
+ipython-sql
+jupyter
+jupyter-notebook-gist
+jupyter_client
+matplotlib
+notebook
+pandas
+smart_open
