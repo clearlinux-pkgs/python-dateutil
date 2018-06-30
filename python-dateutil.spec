@@ -6,7 +6,7 @@
 #
 Name     : python-dateutil
 Version  : 2.6.1
-Release  : 34
+Release  : 35
 URL      : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
 Source99 : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz.asc
@@ -14,11 +14,11 @@ Summary  : Extensions to the standard Python datetime module
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: python-dateutil-python3
+Requires: python-dateutil-license
 Requires: python-dateutil-python
 Requires: six
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
@@ -37,6 +37,14 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the python-dateutil package.
+
+
+%package license
+Summary: license components for the python-dateutil package.
+Group: Default
+
+%description license
+license components for the python-dateutil package.
 
 
 %package python
@@ -65,7 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528562397
+export SOURCE_DATE_EPOCH=1530329656
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -73,10 +81,12 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1528562397
+export SOURCE_DATE_EPOCH=1530329656
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/python-dateutil
+cp LICENSE %{buildroot}/usr/share/doc/python-dateutil/LICENSE
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -89,6 +99,10 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/python-dateutil/LICENSE
 
 %files python
 %defattr(-,root,root,-)
