@@ -6,7 +6,7 @@
 #
 Name     : python-dateutil
 Version  : 2.6.1
-Release  : 38
+Release  : 39
 URL      : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
 Source99 : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz.asc
