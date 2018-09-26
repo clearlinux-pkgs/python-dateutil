@@ -5,32 +5,31 @@
 # Source0 file verified with key 0xCD54FCE3D964BEFB (paul@ganssle.io)
 #
 Name     : python-dateutil
-Version  : 2.6.1
-Release  : 40
-URL      : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
-Source0  : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz
-Source99 : https://github.com/dateutil/dateutil/releases/download/2.6.1/python-dateutil-2.6.1.tar.gz.asc
+Version  : 2.7.2
+Release  : 46
+URL      : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz
+Source0  : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz
+Source99 : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz.asc
 Summary  : Extensions to the standard Python datetime module
 Group    : Development/Tools
-License  : BSD-3-Clause
-Requires: python-dateutil-python3
-Requires: python-dateutil-license
-Requires: python-dateutil-python
+License  : Apache-2.0 BSD-3-Clause
+Requires: python-dateutil-license = %{version}-%{release}
+Requires: python-dateutil-python = %{version}-%{release}
+Requires: python-dateutil-python3 = %{version}-%{release}
 Requires: six
-BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python-core
-BuildRequires : python3-core
-BuildRequires : python3-dev
+BuildRequires : buildreq-distutils23
+BuildRequires : buildreq-distutils3
+BuildRequires : freezegun
+BuildRequires : pytest
 BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
-BuildRequires : setuptools-python
+BuildRequires : setuptools_scm
+BuildRequires : setuptools_scm-legacypython
 BuildRequires : six
 BuildRequires : tzdata
 
 %description
-The dateutil module provides powerful extensions to the
-        datetime module available in the Python standard library.
+==========================================
 
 %package legacypython
 Summary: legacypython components for the python-dateutil package.
@@ -52,7 +51,7 @@ license components for the python-dateutil package.
 %package python
 Summary: python components for the python-dateutil package.
 Group: Default
-Requires: python-dateutil-python3
+Requires: python-dateutil-python3 = %{version}-%{release}
 
 %description python
 python components for the python-dateutil package.
@@ -68,14 +67,14 @@ python3 components for the python-dateutil package.
 
 
 %prep
-%setup -q -n python-dateutil-2.6.1
+%setup -q -n python-dateutil-2.7.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530376553
+export SOURCE_DATE_EPOCH=1537945987
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -83,12 +82,12 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+pytest -q dateutil/test
 %install
-export SOURCE_DATE_EPOCH=1530376553
+export SOURCE_DATE_EPOCH=1537945987
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/python-dateutil
-cp LICENSE %{buildroot}/usr/share/doc/python-dateutil/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/python-dateutil
+cp LICENSE %{buildroot}/usr/share/package-licenses/python-dateutil/LICENSE
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -104,7 +103,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(-,root,root,-)
-/usr/share/doc/python-dateutil/LICENSE
+/usr/share/package-licenses/python-dateutil/LICENSE
 
 %files python
 %defattr(-,root,root,-)
