@@ -6,18 +6,17 @@
 #
 Name     : python-dateutil
 Version  : 2.7.2
-Release  : 46
+Release  : 47
 URL      : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz
 Source99 : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz.asc
 Summary  : Extensions to the standard Python datetime module
 Group    : Development/Tools
-License  : Apache-2.0 BSD-3-Clause
-Requires: python-dateutil-license = %{version}-%{release}
-Requires: python-dateutil-python = %{version}-%{release}
-Requires: python-dateutil-python3 = %{version}-%{release}
+License  : Apache-2.0 BSD-3-Clause Dual
+Requires: python-dateutil-python3
+Requires: python-dateutil-license
+Requires: python-dateutil-python
 Requires: six
-BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : freezegun
 BuildRequires : pytest
@@ -30,15 +29,6 @@ BuildRequires : tzdata
 
 %description
 ==========================================
-
-%package legacypython
-Summary: legacypython components for the python-dateutil package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the python-dateutil package.
-
 
 %package license
 Summary: license components for the python-dateutil package.
@@ -74,22 +64,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537945987
-python2 setup.py build -b py2
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1537969549
+python3 setup.py build
 
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-pytest -q dateutil/test
 %install
-export SOURCE_DATE_EPOCH=1537945987
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/python-dateutil
-cp LICENSE %{buildroot}/usr/share/package-licenses/python-dateutil/LICENSE
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+mkdir -p %{buildroot}/usr/share/doc/python-dateutil
+cp LICENSE %{buildroot}/usr/share/doc/python-dateutil/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -97,13 +79,9 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
-
 %files license
-%defattr(-,root,root,-)
-/usr/share/package-licenses/python-dateutil/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/doc/python-dateutil/LICENSE
 
 %files python
 %defattr(-,root,root,-)
