@@ -6,13 +6,13 @@
 #
 Name     : python-dateutil
 Version  : 2.7.2
-Release  : 47
+Release  : 48
 URL      : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz
 Source99 : https://github.com/dateutil/dateutil/releases/download/2.7.2/python-dateutil-2.7.2.tar.gz.asc
 Summary  : Extensions to the standard Python datetime module
 Group    : Development/Tools
-License  : Apache-2.0 BSD-3-Clause Dual
+License  : Apache-2.0 BSD-3-Clause
 Requires: python-dateutil-python3
 Requires: python-dateutil-license
 Requires: python-dateutil-python
@@ -64,7 +64,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537969549
+export SOURCE_DATE_EPOCH=1537970166
 python3 setup.py build
 
 %install
