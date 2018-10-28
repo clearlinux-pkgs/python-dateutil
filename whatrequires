@@ -1,9 +1,11 @@
 # This file contains recursive sources that require this package
 bash_kernel
+catkin_pkg
 icalendar
 ipykernel
 ipython
 jupyter_client
 matplotlib
+oslo.privsep
 pandas
 statsmodels
