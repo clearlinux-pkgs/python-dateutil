@@ -4,6 +4,6 @@ tzdata
 setuptools
 setuptools-legacypython
 setuptools_scm
-setuptools_scm-legacypython
+deprecated-setuptools_scm-legacypython
 pytest
 freezegun

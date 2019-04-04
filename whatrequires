@@ -1,4 +1,7 @@
 # This file contains recursive sources that require this package
+adal
+aniso8601
+azure-storage-common
 bash_kernel
 catkin_pkg
 icalendar

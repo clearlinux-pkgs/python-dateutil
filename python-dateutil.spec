@@ -6,11 +6,11 @@
 #
 Name     : python-dateutil
 Version  : 2.7.5
-Release  : 53
+Release  : 54
 URL      : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz
 Source99 : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz.asc
-Summary  : Extensions to the standard Python datetime module
+Summary  : Provides powerful extensions to the standard datetime module
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause
 Requires: python-dateutil-license = %{version}-%{release}
@@ -18,23 +18,18 @@ Requires: python-dateutil-python = %{version}-%{release}
 Requires: python-dateutil-python3 = %{version}-%{release}
 Requires: six
 BuildRequires : buildreq-distutils3
+BuildRequires : deprecated-setuptools_scm-legacypython
 BuildRequires : freezegun
 BuildRequires : pytest
 BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
 BuildRequires : setuptools_scm
-BuildRequires : setuptools_scm-legacypython
 BuildRequires : six
 BuildRequires : tzdata
 
 %description
+dateutil - powerful extensions to datetime
 ==========================================
-        
-        |pypi| |support| |licence| 
-        
-        |gitter| |readthedocs|
-        
-        |travis| |appveyor| |coverage|
 
 %package license
 Summary: license components for the python-dateutil package.
@@ -70,10 +65,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540740892
+export SOURCE_DATE_EPOCH=1554343827
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-dateutil
 cp LICENSE %{buildroot}/usr/share/package-licenses/python-dateutil/LICENSE
