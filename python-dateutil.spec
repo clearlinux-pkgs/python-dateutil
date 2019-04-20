@@ -6,7 +6,7 @@
 #
 Name     : python-dateutil
 Version  : 2.7.5
-Release  : 54
+Release  : 55
 URL      : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz
 Source99 : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz.asc
