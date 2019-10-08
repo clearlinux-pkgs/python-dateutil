@@ -6,11 +6,11 @@
 #
 Name     : python-dateutil
 Version  : 2.7.5
-Release  : 56
+Release  : 57
 URL      : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz
 Source0  : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz
-Source99 : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz.asc
-Summary  : Provides powerful extensions to the standard datetime module
+Source1 : https://github.com/dateutil/dateutil/releases/download/2.7.5/python-dateutil-2.7.5.tar.gz.asc
+Summary  : Extensions to the standard Python datetime module
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause
 Requires: python-dateutil-license = %{version}-%{release}
@@ -18,18 +18,21 @@ Requires: python-dateutil-python = %{version}-%{release}
 Requires: python-dateutil-python3 = %{version}-%{release}
 Requires: six
 BuildRequires : buildreq-distutils3
-BuildRequires : deprecated-setuptools_scm-legacypython
 BuildRequires : freezegun
 BuildRequires : pytest
 BuildRequires : setuptools
-BuildRequires : setuptools-legacypython
 BuildRequires : setuptools_scm
 BuildRequires : six
 BuildRequires : tzdata
 
 %description
-dateutil - powerful extensions to datetime
 ==========================================
+        
+        |pypi| |support| |licence| 
+        
+        |gitter| |readthedocs|
+        
+        |travis| |appveyor| |coverage|
 
 %package license
 Summary: license components for the python-dateutil package.
@@ -64,8 +67,13 @@ python3 components for the python-dateutil package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554343827
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570563321
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

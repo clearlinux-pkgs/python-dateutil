@@ -2,8 +2,6 @@
 # picked up automatically. One name per line, no whitespace.
 tzdata
 setuptools
-setuptools-legacypython
 setuptools_scm
-deprecated-setuptools_scm-legacypython
 pytest
 freezegun
