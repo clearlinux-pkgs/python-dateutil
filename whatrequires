@@ -1,15 +1,12 @@
 # This file contains recursive sources that require this package
+Cura
 adal
-alembic
-aniso8601
-azure-storage-common
+arrow
 bash_kernel
 bokeh
 botocore
-catkin_pkg
 certbot
 freezegun
-gnocchiclient
 hypothesis
 icalendar
 influxdb
@@ -20,14 +17,7 @@ khal
 koji
 matplotlib
 mercurial
-mycroft-core
-nova
-oslo.log
-oslo.privsep
 pandas
-pykwalify
-pysaml2
-salt
+pcs
 statsmodels
-subunit2sql
 suricata
